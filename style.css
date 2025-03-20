@@ -1,0 +1,512 @@
+/* Font link */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none; /* input tıklandığında etrafındaki çizgileri kaldır */
+  text-decoration: none; /* linklerin altındaki çizğiyi kaldır*/
+  list-style: none; /* listelemerin başında nokta, sayı vb. olmasın*/
+  text-transform: capitalize; /*Kelimenin tüm harfleri büyük olsun*/
+  transition: 0.2s all linear; /* tüm  geçiş animasyonları 0.2 saniyede düz (linear) şekilde olsun */
+}
+
+/* projede genel olarak kullanılan özellikler vardır, bunlarda bir değişiklik yapılmak istendiğinde burdan değiştirildiğinde özellik verilen her yer otamatik değiştirilecektir.Tek tek değiştirmeye gerek kalmaz  */
+:root {
+  --main-color: #f5deb3;
+  --btn-color: #cc6600;
+  --icon-color: #ff850a;
+  --black-color: #13131a;
+  --bg-color: #010103;
+  --border: 0.1rem solid rgb(255, 255, 255, 0.3);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  overflow-x: hidden; /* Nesnelerin taşmalararına izin verme */
+  scroll-behavior: smooth; /*! Site içi yönlendirmeyi yumuşak yap*/
+  font-size: 10px;
+  /* normalde 1rem= 16px , HTML font-size:62.5% vererek 1rem= 10px olmasını istedim */
+  /* veya font-size: 10px; dersem de 1rem= 10px olur.iki farklı şekilde yapılabilir.Ancak HTML içinde yapılması gerekir */
+}
+
+/*! html sayfasındaki scrolbar (kaydırma cubuğu) kapladığı alan  */
+html::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+/*! scrolbar arkaplanı  */
+html::-webkit-scrollbar-track {
+  background-color: transparent; /* scroolbar arkaplanı  görükmesin  */
+}
+
+/*! scrolbarın imleçle tutulan kısmı */
+html::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 5rem;
+}
+
+.btn {
+  /* inline = bütün satırı kaplamaz, diğer elementlerle yan yana gelebilir
+  block = margin,padding,height,width alabilir  */
+  display: inline-block;
+  padding: 0.9rem 3rem;
+  font-size: 1.7rem;
+  background-color: var(--btn-color);
+  color: var(--main-color);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  scale: 1.2; /* büyümesi için */
+}
+
+section {
+  padding: 2rem 7%;
+}
+
+.heading {
+  text-align: center;
+  font-size: 4rem;
+  text-transform: uppercase;
+  padding: 4rem;
+}
+
+.heading span {
+  text-transform: uppercase;
+  color: var(--btn-color);
+}
+
+.price {
+  font-size: 2.5rem;
+  padding: 0.5rem 0;
+}
+
+.price span {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  text-decoration: line-through;
+}
+
+.box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
+  /* 30rem'in katları (30rem,60rem,90rem...) kadar yer açıldığında yeni bir sütün oluşturur. (1fr) Eğer yetirnce herhangi bir katı tamamlayacak alan yoksa kalan boş alanı mevcüt sütünlara eşit yap.   */
+  gap: 1rem;
+}
+
+/* ! Header start */
+header {
+  background-color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 6%;
+  border-bottom: var(--border);
+  position: fixed; /* ekrana sabitledim.Scroll ile birlikte gelir*/
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.logo img {
+  width: 6rem;
+  border-radius: 50%;
+}
+nav a {
+  color: var(--main-color);
+  padding: 0 1rem;
+  font-size: 1.6rem;
+}
+
+nav a:hover,
+nav #actv {
+  color: var(--icon-color);
+  border-bottom: 0.1rem solid var(--icon-color);
+}
+
+nav {
+  padding: 1.5rem 2rem;
+  box-shadow: 0.4rem 0.4rem 0.4rem var(--icon-color);
+}
+
+header .icons {
+  display: none;
+  color: white;
+  cursor: pointer;
+  font-size: 2.5rem;
+}
+header .icons i {
+  margin: 0 0.5rem;
+}
+
+header .icons i:hover,
+header .icons #menu-btn {
+  color: var(--icon-color);
+}
+
+/* !home section start */
+.home {
+  min-height: 100vh;
+  background-image: url(images/home.jpg);
+  background-position: center center; /* resmi yatayda ve dikeyde ortasından hizala*/
+  background-size: cover; /* resimin boyutu home kapsayıcısının tamamını kaplaycak şekilde hizalansın*/
+
+  display: flex;
+  align-items: center;
+  padding: 0 10vw;
+}
+
+.home .content {
+  max-width: 60rem;
+}
+
+.home .content h3 {
+  font-size: 6rem;
+  text-transform: uppercase;
+}
+
+.home .content p {
+  font-size: 1.5rem;
+  padding: 1rem 0;
+  line-height: 1.8; /*satır yüksekliği 1.8 katına çıksın*/
+
+  font-weight: lighter; /*yazının ince olmasını istedim*/
+  color: var(--main-color);
+}
+
+/* ! Aboutus section start */
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.row .image {
+  flex: 1 1 45rem;
+}
+
+.row .image img {
+  width: 100%;
+}
+
+.row .content {
+  flex: 1 1 45rem;
+  padding: 2rem;
+}
+
+.row .content h3 {
+  font-size: 3rem;
+}
+.row .content p {
+  font-size: 1.6rem;
+  padding: 1rem 0;
+  line-height: 1.5;
+}
+
+/* ! menu section start */
+.menu .box {
+  border: var(--border);
+  border-radius: 5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.menu .box:hover {
+  background-color: var(--main-color);
+  color: var(--bg-color);
+  cursor: pointer;
+}
+.menu .box img {
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+}
+
+.menu .box h3 {
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+
+/* ! products start */
+.products-box {
+  border: var(--border);
+  border-radius: 5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.products-box:hover {
+  background-color: var(--main-color);
+  color: var(--bg-color);
+}
+
+.products-box .image {
+  padding: 2rem 0;
+}
+
+.products-box img {
+  height: 25rem;
+  width: 25rem;
+  border-radius: 5rem;
+}
+
+.products .content h3 {
+  font-size: 2.5rem;
+}
+.products .content .stars {
+  padding: 1.5rem;
+}
+
+.products .content .stars i {
+  font-size: 1.7rem;
+  color: var(--main-color);
+}
+
+/* ! Reviews Start */
+.reviews .box {
+  border: var(--border);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 5rem;
+}
+
+.reviews .box img {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+}
+
+.reviews .box p {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: gainsboro;
+  padding: 2rem 0;
+}
+
+.reviews .stars i {
+  font-size: 1.5rem;
+  color: var(--main-color);
+}
+.reviews .box h3 {
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+
+/* ! Contact Start */
+.contact .box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background-color: var(--black-color);
+  border: var(--border);
+}
+
+.contact .box iframe {
+  flex: 1 1 45rem;
+  width: 100%;
+  object-fit: cover;
+}
+.contact .box form {
+  flex: 1 1 45rem;
+  padding: 5rem 2rem;
+}
+
+.contact .box form h3 {
+  text-transform: uppercase;
+  font-size: 3.5rem;
+}
+
+.contact .box form .input-box {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0 2rem;
+  background-color: var(--black-color);
+  border: var(--border);
+  border-radius: 5rem;
+}
+
+.contact .box form .input-box input {
+  width: 100%;
+  padding: 2rem;
+  background: none;
+  color: white;
+  font-size: 2rem;
+  text-transform: none;
+}
+.contact .box form .input-box span {
+  font-size: 2rem;
+  padding-left: 2rem;
+}
+
+.contact .box form .btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact .box form .btn {
+  width: 20rem;
+}
+
+/* ! Blog Start */
+.blog .box {
+  border: var(--border);
+  border-radius: 5rem;
+  overflow: hidden;
+}
+
+.blog .box .image {
+  width: 100%;
+  height: 25rem;
+  border-radius: 5rem;
+}
+
+.blog .box .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5rem;
+}
+
+.blog .box:hover .image img {
+  transform: scale(1.2); /*! imleç üstüne geldiğinde 1.2 oranında büyüsün*/
+}
+
+.blog .box .content {
+  padding: 2rem;
+}
+
+.blog .box .content a {
+  font-size: 2.5rem;
+  color: white;
+  line-height: 1.5;
+}
+
+.blog .box .content a:hover {
+  color: var(--btn-color);
+}
+
+.blog .box .content span {
+  display: block;
+  font-size: 1.5rem;
+  padding-top: 1rem;
+  color: var(--icon-color);
+}
+
+.blog .box .content p {
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  color: #ccc;
+  padding: 1rem 0;
+}
+
+.blog .box .content .btn-btn {
+  display: flex;
+  justify-content: center;
+}
+
+/* ! footer start */
+footer {
+  background-color: var(--black-color);
+  text-align: center;
+}
+
+footer section .share i {
+  color: #fff;
+  width: 5rem;
+  height: 5rem;
+  font-size: 3rem;
+  line-height: 5rem;
+  border: var(--border);
+  border-radius: 50%;
+  margin: 0.5rem;
+}
+
+footer section .share i:hover,
+footer .links a:hover {
+  background-color: var(--icon-color);
+}
+
+footer .links {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+footer .links a {
+  font-size: 2rem;
+  color: #fff;
+  padding: 0.7rem 2rem;
+  border: var(--border);
+}
+
+footer .copright {
+  font-size: 2rem;
+  font-weight: lighter;
+  padding: 1.5rem;
+}
+
+footer .copright span a {
+  color: var(--icon-color);
+}
+
+@media (max-width: 800px) {
+  header .icons {
+    display: block;
+  }
+
+  nav {
+    position: absolute;
+    top: 120%;
+    right: 3%;
+    display: none;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: var(--bg-color);
+    border-radius: 3rem;
+  }
+
+  .active{
+    display: flex;
+  }
+
+  .home {
+    background-position: left;
+  }
+  .home .content h3 {
+    font-size: 4rem;
+    justify-content: center;
+  }
+
+  .about .content h3 {
+    font-size: 2.5rem;
+  }
+  .about .content p {
+    font-size: 1.3rem;
+  }
+  section .heading {
+    font-size: 2.5rem;
+  }
+
+  .contact .box form .btn {
+    width: 100% !important;
+    /* bazen özellikler çakışabilir, bu çakışma sırasında önemli (important) olana öncelik verir*/
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
+}
